@@ -1,0 +1,4 @@
+#!/bin/bash
+# NOTE: to enable parallel, add "--enable-parallel"
+./configure --prefix=/home/aprokop/local/opt/hdf5-1.8.11
+./configure --prefix=/home/aprokop/local/opt/hdf5-1.8.11 --enable-shared

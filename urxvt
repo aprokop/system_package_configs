@@ -1,0 +1,2 @@
+#!/bin/bash
+./configure --prefix=/home/aprokop/local/ --enable-256-color --disable-iso14755

@@ -1,0 +1,4 @@
+#!/bin/bash
+cmake -DCMAKE_INSTALL_PREFIX=/home/aprokop/local -DCMAKE_RELEASE_TYPE=BUILD ../
+make
+make install

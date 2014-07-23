@@ -1,0 +1,2 @@
+#!/bin/sh
+./configure --prefix=/home/aprokop/local --with-termlib --with-shared --with-ticlib [--enable-widec]

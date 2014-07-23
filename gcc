@@ -1,0 +1,20 @@
+#!/bin/bash
+# NOTE: DO NOT RUN DEFAULT CONFIGURE, IT IS NOT SUPPORTED
+VERSION=4.8.0
+tar xzf gcc-${VERSION}.tar.gz
+cd gcc-${VERSION}
+# First, you need to compile gmp, mpfr, mpc
+# This will download them, and gcc will automatically compile them in
+./contrib/download_prerequisites
+cd ..
+mkdir gcc-build
+cd    gcc-build
+# NOTE: make sure you current directory is not in the LIBRARY_PATH,
+# i.e. make sure LIBRARY_PATH does not end in ':'
+../gcc-${VERSION}/configure --prefix=/home/aprokop/local/opt/gcc-${VERSION} --enable-gold --enable-languages=c,c++,fortran
+make
+make install
+# In addition, install libraries
+cd mpfr/ && make install && cd ..
+cd mpc/  && make install && cd ..
+cd gmp/  && make install && cd ..

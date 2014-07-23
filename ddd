@@ -1,0 +1,6 @@
+#!/bin/bash
+# Edit ddd/strclass.C: add
+#  #include <cstdio>
+./configure --prefix=<>
+make
+make install

@@ -1,0 +1,26 @@
+#!/bin/bash
+echo '
+--- include/netcdf.h.orig       2013-08-30 23:40:59.286778394 -0600
++++ include/netcdf.h    2013-08-30 23:42:23.068291654 -0600
+@@ -197,11 +197,11 @@
+ As a rule, NC_MAX_VAR_DIMS <= NC_MAX_DIMS.
+ */
+ /**@{*/
+-#define NC_MAX_DIMS    1024
++#define NC_MAX_DIMS    65536
+ #define NC_MAX_ATTRS   8192
+-#define NC_MAX_VARS    8192
++#define NC_MAX_VARS    524288
+ #define NC_MAX_NAME    256
+-#define NC_MAX_VAR_DIMS        1024 /**< max per variable dimensions */
++#define NC_MAX_VAR_DIMS        8 /**< max per variable dimensions */
+ /**@}*/
+
+ /** This is the max size of an SD dataset name in HDF4 (from HDF4 documentation).*/
+' > netcdf.patch
+
+patch -p1 < netcdf.patch
+# Build for small mesh support
+./configure --disable-netcdf-4 --enable-option-checking --enable-shared --enable-static --prefix=<prefix>
+# OR build for large mesh support
+# ./configure --enable-netcdf-4 --enable-option-checking --enable-shared --enable-static --enable-pnetcdf CC=mpicc CFLAGS="-O3 -I<path_to_hdf5>/include" LDFLAGS="-L<path_to_hdf5>/lib" --prefix=<prefix>

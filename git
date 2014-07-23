@@ -1,0 +1,3 @@
+#!/bin/sh
+make prefix=/home/aprokop/local all doc
+make prefix=/home/aprokop/local install install-doc install-html

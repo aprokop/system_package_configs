@@ -1,0 +1,10 @@
+#!/bin/bash
+
+tar -xzvf ~/.downloads/llvm.tgz
+cd <llvm-version>/tools
+tar -xzvf ~/.downloads/clang.tgz
+mv <clang-version> clang
+cd ..
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=/home/aprokop/local/opt/<llvm-version> -DCMAKE_BUILD_TYPE=RELEASE ..

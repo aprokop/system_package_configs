@@ -1,0 +1,9 @@
+#!/bin/bash
+
+./bootstrap.sh --prefix=/home/aprokop/local/opt/boost-1.53.0 --show-libraries
+
+# GCC
+#./b2 install
+
+# CLANG
+./b2 install toolset="clang"
