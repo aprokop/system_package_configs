@@ -1,0 +1,21 @@
+#!/bin/bash
+# Apply patch for 64-bit integers
+# --- metis.h.orig        2013-03-30 10:24:45.000000000 -0600
+# +++ metis.h     2014-07-30 15:38:34.756378090 -0600
+# @@ -30,7 +30,7 @@
+# GCC does provides these definitions in stdint.h, but it may require some
+# modifications on other architectures.
+# --------------------------------------------------------------------------*/
+# -#define IDXTYPEWIDTH 32
+# +#define IDXTYPEWIDTH 64
+# 
+# 
+# /*--------------------------------------------------------------------------
+#
+mkdir build/Linux-x86_64
+cd build/Linux-x86_64
+cmake -DCMAKE_VERBOSE_MAKEFILE=1 \
+      -DGKLIB_PATH=/home/aprokop/code/packages/scientific/metis-5.1.0/GKlib \
+      -DSHARED=1 \
+      -DCMAKE_INSTALL_PREFIX=/home/aprokop/local/opt/metis-5.1.0 \
+      ../..
