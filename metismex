@@ -1,0 +1,15 @@
+#!/bin/bash
+# 1. Install METIS, configured 64-bit integers.
+#    This step is only required for 64-bit versions of Matlab.  We need to edit
+#    `include/metis.h` and change `#define IDXTYPEWIDTH 32` to `#define
+#    IDXTYPEWIDTH 64`. On my system, this change was to line 33.
+# 2. Pull metismex into metis-<version>/metismex
+cd metis-<version>/metismex
+matlab -nodisplay
+make
+
+# Note: running the suggested example
+#   >> A = spaugment(ones(5)); A(1,10) = 1; A(10,1) = 1; A(5,6) = 1; A(6,5) = 1;
+#   >> [p1,p2] = metispart(sparse(A))
+# actually fails for me, but calling directly passes
+#   >> map = metismex('PartGraphRecursive', A, m);
