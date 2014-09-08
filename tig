@@ -1,4 +1,6 @@
 #!/bin/bash
-./configure --prefix=/home/aprokop/local --without-ncursesw
-make
-make install
+LDFLAGS="-ltinfow" ./configure --prefix=/home/aprokop/local
+./configure
+make --trace
+# make fails in the linking stage because -ltinfo goes before -lncursesw
+# add -ltinfo at the end of the linking command, and rerun linking manually
