@@ -1,0 +1,15 @@
+#!/bin/bash
+
+tar -xzvf ~/.downloads/llvm.tgz
+cd <llvm-version>/tools
+tar -xzvf ~/.downloads/clang.tgz
+mv <clang-version> clang
+tar -xzvf ~/.downloads/lldb.tgz
+mv <lldb-version> lldb
+cd ..
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=/home/aprokop/local/opt/<llvm-version> -DCMAKE_BUILD_TYPE=RELEASE -G Ninja ..
+make
+# To install LLDB, had to edit tools/lldb/scripts/cmake_install.cmake:36 and change lib/python2.6 to lib64/python2.6
+make install
