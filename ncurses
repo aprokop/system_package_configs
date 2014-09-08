@@ -1,2 +1,16 @@
 #!/bin/sh
-./configure --prefix=/home/aprokop/local --with-termlib --with-shared --with-ticlib [--enable-widec]
+./configure --prefix=/home/aprokop/local --without-debug --with-shared --with-termlib --with-ticlib --enable-widec --enable-pc-files
+make
+make install
+cd ~/local/lib
+# Many applications still expect the linker to be able to find
+# non-wide-character Ncurses libraries. Trick such applications into linking
+# with wide-character libraries by means of symlinks and linker scripts
+for lib in ncurses form panel menu tic tinfo; do
+    rm -vf                    lib${lib}.so
+    echo "INPUT(-l${lib}w)" > lib${lib}.so
+    ln -sfv lib${lib}w.a      lib${lib}.a
+    ln -sfv ${lib}w.pc        pkgconfig/${lib}.pc
+done
+
+ln -sfv libncurses++w.a libncurses++.a
