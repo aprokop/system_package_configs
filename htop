@@ -1,0 +1,7 @@
+#!/bin/bash
+# Was getting the following error:
+#
+#    /home/aprokop/local/bin/ld: htop-CRT.o: undefined reference to symbol 'cbreak'
+#    /home/aprokop/local/lib/libtinfo.so.5: error adding symbols: DSO missing from command line
+#
+# Fixed it by adding -ltinfow to the final linkage
