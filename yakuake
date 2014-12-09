@@ -1,4 +1,4 @@
 #!/bin/bash
-cmake -DCMAKE_INSTALL_PREFIX=/home/aprokop/local -DCMAKE_RELEASE_TYPE=BUILD ../
+cmake -DCMAKE_INSTALL_PREFIX=/home/aprokop/local/opt/yakuake-2.9.7 -DCMAKE_BUILD_TYPE=RELEASE ../
 make
 make install
