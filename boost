@@ -1,11 +1,13 @@
 #!/bin/bash
-./bootstrap.sh --prefix=/home/aprokop/local/opt/boost-1.53.0 --show-libraries
+./bootstrap.sh --prefix=/home/aprokop/local/opt/boost-1.57.0 --show-libraries
 
 # Enable MPI (otherwise mpi module is not built)
 echo "using mpi ;" > ~/user-config.jam
 
 # GCC
-/b2 install
+./b2 install toolset=gcc --prefix=/home/aprokop/local/opt/boost-1.57.0
 
 # CLANG
 #./b2 install toolset="clang"
+
+rm ~/user-config.jam
