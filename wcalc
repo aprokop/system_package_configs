@@ -1,2 +1,3 @@
 #!/bin/bash
-./configure --prefix=/home/aprokop/local/ --with-readline
+# install mpfr-devel
+./configure --prefix=/home/aprokop/local/opt/wcalc-2.4.1 --with-readline
