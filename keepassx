@@ -1,0 +1,4 @@
+#!/bin/bash
+qmake PREFIX=/home/aprokop/local/opt/keepassx-0.4.3
+make
+make install
