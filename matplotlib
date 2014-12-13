@@ -1,0 +1,4 @@
+#!/bin/sh
+# Needs update versions of numpy, scipy and nose
+python setup.py build
+PYTHONPATH=/home/aprokop/local/opt/matplotlib/lib64/site-packages:$PYTHONPATH python setup.py install --prefix=/home/aprokop/local/opt/matplotlib
