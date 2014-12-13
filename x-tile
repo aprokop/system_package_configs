@@ -1,0 +1,4 @@
+#!/bin/bash
+
+python setup.py build
+python setup.py install --prefix=/home/aprokop/local/opt/x-tile-2.5/ --exec-prefix=/home/aprokop/local/opt/x-tile-2.5/
