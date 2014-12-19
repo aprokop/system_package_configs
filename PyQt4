@@ -1,0 +1,4 @@
+#!/bin/bash
+python configure-ng.py --static --no-designer-plugin --sysroot=/home/aprokop/local/opt/PyQt-version
+CPATH="/home/aprokop/local/include/python2.6:/usr/include/python2.6:$CPATH" make
+make install
