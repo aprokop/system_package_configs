@@ -1,0 +1,5 @@
+#!/bin/bash
+# glm is a header only library
+mkdir ~/local/opt/glm-0.9.4.6
+cp -r glm ~/local/opt/include/
+
