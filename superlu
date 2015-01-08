@@ -1,0 +1,2 @@
+#!/bin/bash
+# Christian mentioned that it should be compiled with -j1, otherwise some symbols may be missing
