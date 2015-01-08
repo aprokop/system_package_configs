@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# nsight configuration options
+# 0. Edit ${CUDA_TOOLKIT}/libnvvp/nvvp.ini
+#    - Increase Java heap space
+#      -Xmx8G -XX:MaxPermSize=512m
+#    - Fix crashes when opening a file to edit
+#      -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false
+# 1. Create Trilinos project
+#    new "Makefile project with existing code"
+# 2. Update "Window->Preferences->C/C++->File Types"
+#    Add "*.cpp | CUDA C source file"
+# 3. Exclude build/ from the Project
+#    "Project->Properties->Resource->Resource filters"
+# 3. Edit "Project->Properties->General->Paths and Symbols"
+#    Add to #Symbols:
+# 4. Configure appearance
+#    "Window->Preferences->General->Editors->Text Editors"
