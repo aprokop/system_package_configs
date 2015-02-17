@@ -7,6 +7,10 @@ mv <clang-version> clang
 tar -xzvf ~/.downloads/lldb.tgz
 mv <lldb-version> lldb
 cd ..
+cd projects
+ln -s /home/aprokop/code/packages/system/libcxx .
+ln -s /home/aprokop/code/packages/system/libcxxabi .
+cd ..
 mkdir build
 cd build
 module load gcc/4.9.2
