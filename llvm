@@ -20,3 +20,12 @@ cmake -DCMAKE_INSTALL_PREFIX=/home/aprokop/local/opt/llvm-3.5.0 -DCMAKE_BUILD_TY
 make
 # To install LLDB, had to edit tools/lldb/scripts/cmake_install.cmake:36 and change lib/python2.6 to lib64/python2.6
 make install
+
+# Install analyzer tools
+cd ..
+cd tools/clang/tools
+mkdir ~/local/opt/llvm-3.5.0/tools
+cp -r scan-{build,view} ~/local/opt/llvm-3.5.0/tools
+cd ~/local/opt/llvm-3.5.0/bin
+ln -s ../tools/scan-view/scan-view .
+ln -s ../tools/scan-build/scan-build .
