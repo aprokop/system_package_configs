@@ -1,2 +1,4 @@
 #!/bin/sh
-./configure --enable-mpi-fortran --prefix=<>
+./configure --enable-mpi-fortran --prefix=/home/aprokop/local/opt/openmpi-<version>
+# To use with a specific compiler, do
+./configure --enable-mpi-fortran --prefix=/home/aprokop/local/opt/openmpi-<version> CC="full_path_to_compiler" CXX="full_path_to_compiler"
