@@ -1,2 +1,10 @@
 #!/bin/bash
 # Christian mentioned that it should be compiled with -j1, otherwise some symbols may be missing
+
+# Shared libraries
+# Add "-fpic" to the file make.inc (note: you cannot add this to the CFLAGS
+# line since SuperLU ignores CFLAGS for a few files [like the machine epsilon
+# estimator] that should not be optimized)
+#   CC = gcc -fpic
+#After building, issue this command
+gcc -shared -Wl,-soname,libsuperlu_4.3.so *.o -o libsuperlu_4.3.so
