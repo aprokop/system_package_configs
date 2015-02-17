@@ -1,0 +1,7 @@
+#!/bin/bash
+# Use install-GUI.sh
+# Select custom directory /home/aprokop/local/opt/intel/intel-composer_xe-2015.0.090/
+#   note that one needs both subdirs
+mkdir  /home/aprokop/local/opt/intel/intel-composer_xe-2015.0.090/composer_xe_2015.0.090/bin/intel64/../../Licenses
+cd  /home/aprokop/local/opt/intel/intel-composer_xe-2015.0.090/composer_xe_2015.0.090/bin/intel64/../../Licenses
+ln -s ~/intel/licenses/SON.lic .
