@@ -1,3 +1,3 @@
 #!/bin/bash
-PREFIX=/home/aprokop/local/opt/feh-2.12 make; make install
+PREFIX=$HOME/local/opt/feh-2.12 make; make install
 

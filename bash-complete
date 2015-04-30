@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./configure --prefix=/home/aprokop/local/
+./configure --prefix=$HOME/local/
 # Edit completions/Makefile to replace \<reptyr with _reptyr
 make
 make install

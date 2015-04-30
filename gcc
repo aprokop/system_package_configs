@@ -11,7 +11,7 @@ mkdir gcc-${VERSION}-build
 cd    gcc-${VERSION}-build
 # NOTE: make sure you current directory is not in the LIBRARY_PATH,
 # i.e. make sure LIBRARY_PATH does not end in ':'
-../gcc-${VERSION}/configure --prefix=/home/aprokop/local/opt/gcc-${VERSION} --enable-gold --enable-languages=c,c++,fortran
+../gcc-${VERSION}/configure --prefix=$HOME/local/opt/gcc-${VERSION} --enable-gold --enable-languages=c,c++,fortran
 make
 make install
 # In addition, install libraries

@@ -1,2 +1,2 @@
 #!/bin/bash
-./configure --enable-256-color --disable-iso14755 --prefix=/home/aprokop/local/opt/urxvt
+./configure --enable-256-color --disable-iso14755 --prefix=$HOME/local/opt/urxvt

@@ -1,3 +1,3 @@
 #!/bin/bash
 ./configure.py --bootstrap
-cp ninja ~/local/bin/
+cp ninja $HOME/local/bin/

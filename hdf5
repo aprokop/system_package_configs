@@ -1,10 +1,10 @@
 #!/bin/bash
 # NOTE: to enable parallel, add "--enable-parallel"
 module load gcc/4.9.2
-./configure --prefix=/home/aprokop/local/opt/hdf5-1.8.11
+./configure --prefix=$HOME/local/opt/hdf5-1.8.11
 make distclean
 
 module load openmpi
 export CFLAGS="-fPIC"
 export OMPI_CFLAGS="-fPIC"
-./configure --prefix=/home/aprokop/local/opt/hdf5-1.8.11 --enable-shared
+./configure --prefix=$HOME/local/opt/hdf5-1.8.11 --enable-shared

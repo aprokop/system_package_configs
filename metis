@@ -15,7 +15,7 @@
 mkdir build/Linux-x86_64
 cd build/Linux-x86_64
 cmake -DCMAKE_VERBOSE_MAKEFILE=1 \
-      -DGKLIB_PATH=/home/aprokop/code/packages/scientific/metis-5.1.0/GKlib \
+      -DGKLIB_PATH=$HOME/code/packages/scientific/metis-5.1.0/GKlib \
       -DSHARED=1 \
-      -DCMAKE_INSTALL_PREFIX=/home/aprokop/local/opt/metis-5.1.0 \
+      -DCMAKE_INSTALL_PREFIX=$HOME/local/opt/metis-5.1.0 \
       ../..

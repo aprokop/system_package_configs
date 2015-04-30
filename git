@@ -1,13 +1,13 @@
 #!/bin/sh
-make prefix=/home/aprokop/local/opt/git all doc
-make prefix=/home/aprokop/local/opt/git install install-doc install-html
-cp contrib/workdir/git-new-workdir /home/aprokop/local/opt/git/bin
+make prefix=$HOME/local/opt/git all doc
+make prefix=$HOME/local/opt/git install install-doc install-html
+cp contrib/workdir/git-new-workdir $HOME/local/opt/git/bin
 
 # For static installation
 # Install RHEL packages:
 #   - glibc-static
 #   - zlib-static
 make configure
-CFLAGS="$CFLAGS -static -static-libgcc" ./configure --prefix=/home/aprokop/local/opt/git-static
+CFLAGS="$CFLAGS -static -static-libgcc" ./configure --prefix=$HOME/local/opt/git-static
 make
 make install

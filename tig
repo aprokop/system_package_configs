@@ -1,5 +1,5 @@
 #!/bin/bash
-LDFLAGS="-ltinfow" ./configure --prefix=/home/aprokop/local
+LDFLAGS="-ltinfow" ./configure --prefix=$HOME/local
 ./configure
 make --trace
 # make fails in the linking stage because -ltinfo goes before -lncursesw
