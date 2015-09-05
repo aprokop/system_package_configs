@@ -1,0 +1,4 @@
+#!/bin/bash
+CC=gcc CXX=g++ ./configure --prefix=~/local/opt/matio-<version>
+make
+make install
