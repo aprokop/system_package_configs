@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# RHEL6: Make sure that bash-complete package is not installed, as it would conflict with newer script files
 ./configure --prefix=$HOME/local/
 # Edit completions/Makefile to replace \<reptyr with _reptyr
 make
