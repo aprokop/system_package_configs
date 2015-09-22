@@ -1,0 +1,12 @@
+#!/bin/bash
+VERSION=3.5.0
+./configure --prefix=$HOME/local/opt/python-$VERSION
+make
+make install
+cd $HOME/local/opt/python-$VERSION/bin
+./pip3 install numpy scipy matplotlib PyYAML pandas
+# As of 09/16/2015, some of the kernels were not ported to ipython4, so I need an earlier version
+./pip3 install ipython[notebook]==3.2.0
+./pip3 install bash_kernel octave_kernel
+# MATLAB kernel does not work at this moment because of some linking problems with pymatbridge (GLIBC)
+# ./pip3 install matlab_kernel
