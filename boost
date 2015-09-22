@@ -1,13 +1,19 @@
 #!/bin/bash
-./bootstrap.sh --prefix=$HOME/local/opt/boost-1.57.0 --show-libraries
+
+VERSION=1.58.0
 
 # Enable MPI (otherwise mpi module is not built)
+module load openmpi
 echo "using mpi ;" > $HOME/user-config.jam
 
-# GCC
-./b2 install toolset=gcc --prefix=$HOME/local/opt/boost-1.57.0
+# GCC, pre-CXX11
+./bootstrap.sh --prefix=$HOME/local/opt/boost-$VERSION --show-libraries
+./b2 install toolset=gcc --prefix=$HOME/local/opt/boost-$VERSION
 
-# CLANG
-#./b2 install toolset="clang"
+# GCC, post-CXX11
+GCC_VERSION="5.2.0"
+module load gcc/${GCC_VERSION}
+./bootstrap.sh --prefix=$HOME/local/opt/boost-$VERSION-cxx11 --show-libraries
+./b2 install toolset=gcc --prefix=$HOME/local/opt/boost-$VERSION-cxx11 linkflags="-Wl,-rpath=/home/aprokop/local/opt/gcc-${GCC_VERSION}/lib64" variant=release
 
 rm $HOME/user-config.jam
