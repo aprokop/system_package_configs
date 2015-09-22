@@ -1,0 +1,3 @@
+#!/bin/bash
+VERSION=0.2.14
+make PREFIX=$HOME/local/opt/openblas-$VERSION/ install
