@@ -1,31 +1,34 @@
 #!/bin/bash
+module load python/2.7.9
+module load gcc/5.1.0
 
-tar -xzvf ~/.downloads/llvm.tgz
-cd <llvm-version>/tools
-tar -xzvf ~/.downloads/clang.tgz
-mv <clang-version> clang
-tar -xzvf ~/.downloads/lldb.tgz
-mv <lldb-version> lldb
-cd ..
-cd projects
-ln -s /home/aprokop/code/packages/system/libcxx .
-ln -s /home/aprokop/code/packages/system/libcxxabi .
-cd ..
+DOWNLOAD_DIR=$HOME/.downloads
+PACKAGES_DIR=$HOME/code/packages/system
+VERSION=3.6.0
+
+GCC_RPATH="$HOME/local/opt/gcc-5.1.0/lib64/"
+
+tar -xzvf $DOWNLOAD_DIR/llvm.tgz
+cd llvm-$VERSION/tools      # llvm/tools
+tar -xJvf $DOWNLOAD_DIR/cfe-$VERSION.tar.xz;        mv cfe-${VERSION}.src       clang
+tar -xJvf $DOWNLOAD_DIR/lldb-$VERSION.tar.xz;       mv lldb-${VERSION}.src      lldb
+cd ..                       # llvm
+cd projects                 # llvm/projects
+tar -xJvf $DOWNLOAD_DIR/libcxx-$VERSION.tar.xz;     mv libcxx-${VERSION}.src    libcxx
+tar -xJvf $DOWNLOAD_DIR/libcxxabi-$VERSION.tar.xz;  mv libcxxabi-${VERSION}.src libcxxabi
+cd ..                       # llvm
 mkdir build
-cd build
-module load gcc/4.9.2
-export CC=clang
-export CXX=clang++
-cmake -DCMAKE_INSTALL_PREFIX=/home/aprokop/local/opt/llvm-3.5.0 -DCMAKE_BUILD_TYPE=RELEASE -DLLVM_ENABLE_LIBCXX=ON -G Ninja ..
-make
+cd build                    # llvm/build
+cmake -DCMAKE_INSTALL_PREFIX=$HOME/local/opt/llvm-$VERSION -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_C_FLAGS="-Wl,-rpath=$GCC_RPATH" -DCMAKE_CXX_FLAGS="-Wl,-rpath=$GCC_PATH" -G Ninja ..
+
 # To install LLDB, had to edit tools/lldb/scripts/cmake_install.cmake:36 and change lib/python2.6 to lib64/python2.6
 make install
 
 # Install analyzer tools
 cd ..
 cd tools/clang/tools
-mkdir ~/local/opt/llvm-3.5.0/tools
-cp -r scan-{build,view} ~/local/opt/llvm-3.5.0/tools
-cd ~/local/opt/llvm-3.5.0/bin
+mkdir $HOME/local/opt/llvm-$VERSION/tools
+cp -r scan-{build,view} $HOME/local/opt/llvm-$VERSION/tools
+cd $HOME/local/opt/llvm-$VERSION/bin
 ln -s ../tools/scan-view/scan-view .
 ln -s ../tools/scan-build/scan-build .
