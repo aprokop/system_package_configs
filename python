@@ -4,9 +4,29 @@ VERSION=3.5.0
 make
 make install
 cd $HOME/local/opt/python-$VERSION/bin
-./pip3 install numpy scipy matplotlib PyYAML pandas
+./pip3 install numpy scipy PyYAML pandas
+# Install matplotlib only after numpy is installed
+./pip3 install matplotlib
+./pip3 install mpltools
 # As of 09/16/2015, some of the kernels were not ported to ipython4, so I need an earlier version
 ./pip3 install ipython[notebook]==3.2.0
 ./pip3 install bash_kernel octave_kernel
 # MATLAB kernel does not work at this moment because of some linking problems with pymatbridge (GLIBC)
 # ./pip3 install matlab_kernel
+
+./pip3 install sumatra gitpython
+
+# Apply the following patch to Sumatra installation
+# Otherwise, it completely messes up with my parameter lists
+--- commands.py.orig    2015-10-01 17:14:19.795047501 -0600
++++ commands.py 2015-10-01 17:15:17.099492531 -0600
+@@ -73,7 +73,6 @@
+for arg in args:
+    have_parameters = False
+    if os.path.isfile(arg):  # could be a parameter file or a data file
+-       parameters = build_parameters(arg)
++       parameters = None
+
+        if parameters is not None:
+            parameter_sets.append(parameters)
+
