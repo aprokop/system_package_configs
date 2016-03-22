@@ -1,0 +1,4 @@
+#/bin/bash
+
+# NERSC Edison
+C=cc CXX=CC CFLAGS=-O3 CXXFLAGS=-O3 ./configure --prefix=/global/homes/j/jjhu/Software/install/edison-gcc-4.9.2

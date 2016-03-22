@@ -8,3 +8,9 @@ module load openmpi
 export CFLAGS="-fPIC"
 export OMPI_CFLAGS="-fPIC"
 ./configure --prefix=$HOME/local/opt/hdf5-1.8.11 --enable-shared
+
+
+# NERSC edison
+./configure CC=cc FC=ftn CXX=CC CXXFLAGS="-fPIC -O3" CFLAGS="-fPIC -O3" FCFLAGS="-fPIC -O3" \
+    --enable-parallel --with-zlib=/global/homes/j/jjhu/Software/install/edison-gcc-4.9.2 \
+    --prefix=/global/homes/j/jjhu/Software/install/edison-gcc-4.9.2

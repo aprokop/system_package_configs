@@ -24,3 +24,7 @@ patch -p1 < netcdf.patch
 ./configure --disable-netcdf-4 --enable-option-checking --enable-shared --enable-static --prefix=<prefix>
 # OR build for large mesh support
 # ./configure --enable-netcdf-4 --enable-option-checking --enable-shared --enable-static --enable-pnetcdf CC=mpicc CFLAGS="-O3 -I<path_to_hdf5>/include" LDFLAGS="-L<path_to_hdf5>/lib" --prefix=<prefix>
+
+
+# NERSC Edison
+./configure CC=cc FC=ftn CXX=CC CFLAGS="-I/global/homes/j/jjhu/Software/install/edison-gcc-4.9.2/include -O3" LDFLAGS="-L/global/homes/j/jjhu/Software/install/edison-gcc-4.9.2/lib" LIBS="-ldl" --disable-fsync --disable-cdmremote --disable-dap --disable-shared --disable-doxygen --prefix="/global/homes/j/jjhu/Software/install/edison-gcc-4.9.2" 
