@@ -14,7 +14,7 @@ cd $HOME/local/opt/python-$VERSION/bin
 # MATLAB kernel does not work at this moment because of some linking problems with pymatbridge (GLIBC)
 # ./pip3 install matlab_kernel
 
-./pip3 install sumatra gitpython
+./pip3 install sumatra gitpython transitions
 
 # Apply the following patch to Sumatra installation
 # Otherwise, it completely messes up with my parameter lists
