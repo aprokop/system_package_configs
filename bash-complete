@@ -8,3 +8,9 @@ make install
 # Copy missing completions (like tmux) from the previous install:
 #   if you did not run "rm -rf $HOME/local/share/bash-completion", you don't need to do anything
 #   if you did, copy from the backup
+
+# Install a better tmux completion
+# This one allows to complete session names
+cd $HOME/local/share/bash-completion/completions
+wget https://raw.githubusercontent.com/srsudar/tmux-completion/master/tmux
+mv -f tmux.1 tmux
