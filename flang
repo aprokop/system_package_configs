@@ -1,0 +1,45 @@
+#!/bin/bash
+
+BUILD_DIR=...
+
+# Install LLVM (4.0)
+cd $BUILD_DIR
+git clone https://github.com/llvm-mirror/llvm.git
+cd llvm
+git checkout release_40
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=$HOME/local/opt/llvm-flang ..
+make
+make install
+
+# Add LLVM path
+export PATH="$HOME/local/opt/llvm-flang/bin:$PATH"
+
+# Install modified clang
+cd $BUILD_DIR
+git clone https://github.com/flang-compiler/clang.git
+cd clang
+git checkout flang_release_40
+mkdir build && cd build
+cmake ..
+make
+make install
+
+# Install openmp-llvm (4.0)
+cd $BUILD_DIR
+git clone https://github.com/llvm-mirror/openmp.git
+cd openmp/runtime
+git checkout release_40
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=$HOME/local/opt/llvm-flang ..
+make
+make install
+
+# Install flang
+cd $BUILD_DIR
+git clone https://github.com/flang-compiler/flang.git
+cd flang
+mkdir build && cd build
+cmake -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang -DCMAKE_Fortran_COMPILER=flang -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=$HOME/local/opt/llvm-flang ..
+make
+make install
